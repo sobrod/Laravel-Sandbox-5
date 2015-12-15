@@ -16,7 +16,7 @@ class PagesController extends Controller
         $data['last'] = 'Rodriguez';
         $data['name'] = 'Igore Rodriguez';
         
-        $name = 'Igore <span style="color: green;">Rodriguez</span> <scrip>alert("Hacked!!");</script>'; //View data as variable
+        $name = 'Igore <span style="color: green;">Rodriguez</span> <script>alert("Hacked!!");</script>'; //View data as variable
         
         //Note: compact('x', 'y', 'z', .....) will try to find variables $x,$y,$z... and compact them into an associative array.
         $first = "Igore";
@@ -34,5 +34,15 @@ class PagesController extends Controller
         $aboutView = view('pages.about', compact('first', 'last', 'name'));
         
         return $aboutView;
+    }
+    
+    public function people()
+    {
+        $people = ['Max Cavalera', 'Jimmy Screemerclauz', 'Jeb Bush'];
+        
+        $peepsView = view('pages.people');
+        $peepsView->with('people', $people);
+        
+        return $peepsView;
     }
 }

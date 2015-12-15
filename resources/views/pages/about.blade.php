@@ -1,15 +1,11 @@
 
-<!doctype html>
+@extends('appMaster')
 
-<html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
+@section('head')
         <title>About</title>
-    </head>
-        
-    <body>
-        
+@endsection
+
+@section('content')   
         <!-- UN-ESCAPED ECHO THE PLAIN PHP WAY -->
         <!--<h1>About: <?= $name; ?></h1>-->
         <!-- ESCAPED ECHO DATA THE LARAVEL WAY -->
@@ -21,5 +17,4 @@
         
         
         <p>Learn all about....</p>
-    </body>
-</html>
+@endsection
