@@ -22,3 +22,15 @@ Route::get('contact', 'WelcomeController@contact');
 Route::get("about", "PagesController@about");
 
 Route::get('people', 'PagesController@people');
+
+/*
+|--------------------------------------------------------------------------
+| Article routes
+|--------------------------------------------------------------------------
+|
+| Article routes
+|
+*/
+
+Route::get('articles', 'ArticlesController@index'); //Articles home
+Route::get('articles/{id}', 'ArticlesController@show'); //Show selected article
