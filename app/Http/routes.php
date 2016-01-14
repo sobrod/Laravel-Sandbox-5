@@ -33,4 +33,11 @@ Route::get('people', 'PagesController@people');
 */
 
 Route::get('articles', 'ArticlesController@index'); //Articles home
+Route::get('articles/create', 'ArticlesController@create'); //Create a new article
+//Post to the class when saving a new object and using REST.
+Route::post('articles', 'ArticlesController@store');  //Save a new article.
+
+//NOTE: Wild card routes should always be last since articles/create will match articles/{id}.
 Route::get('articles/{id}', 'ArticlesController@show'); //Show selected article
+
+
