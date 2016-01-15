@@ -9,6 +9,8 @@
     <h1>New Article</h1>
     <hr/>    
     
+    @include('partials._errorMsg')
+    
     <form method="POST" action="{{ url('articles') }}">
     
         <input type="hidden" name="_method" value="POST">

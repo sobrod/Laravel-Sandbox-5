@@ -66,8 +66,17 @@ class ArticlesController extends Controller
      *
      * @return Redirect
      */
-    public function store(Request $request)
+    public function store(Requests\CreateArticleRequest $request)
     {
+        //Body will execute only if CreateArticleRequest rules pass
+        
+        //Use base class Controller.validate(Request $request, $rules[])
+        //$this->validate($request, [
+        //    'title'=>'required',
+        //    'body'=>'required',
+        //    'published_at'=>'required|date'
+        //]);
+        
         $input; //User input array
         
         $input = $request->all(); //Get an array of user input
