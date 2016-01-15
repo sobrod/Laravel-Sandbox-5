@@ -16,7 +16,7 @@
             <!--Using the action() helper method-->
             <!--<h1><a href="{{ action('ArticlesController@show', [$article->id]) }}">{{ $article->title }}</a></h1>-->
             <!--Using the url() function-->
-            <h1><a href="{{ url('/articles', $article->id) }}">{{ $article->title }}</a></h1>
+            <h1><a href="{{ url('/articles', $article->id) }}">{{ $article->title }} : {{ $article->published_at->format('m-d-Y H:i') }}</a></h1>
             <div class="body">
                 {{ $article->body }}
             </div>

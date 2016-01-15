@@ -24,6 +24,12 @@
             <input class="form-control" type="textarea" name="body" id="body" default="null">
         </div>
         
+        <!-- PUBLISHED AT -->
+        <div class="form-group">
+            <label for="published_at">Publish On:</label>
+            <input class="form-control" type="date" value="{{ date('Y-m-d') }}" name="published_at" id="published_at">
+        </div>
+        
         <div class="form-group">
             <input type="submit" value="Submit" class="btn btn-primary form-control">
         </div>

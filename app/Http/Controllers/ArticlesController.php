@@ -18,7 +18,11 @@ class ArticlesController extends Controller
     public function index()
     {
         //Note: all() returns an eloquenet collection.
-        $articles = Article::orderBy('published_at', 'desc')->get();
+        //Get articles with a publish date that is <= now
+        $articles = Article::orderBy('published_at', 'desc')->published()->get();
+        
+        //Get all articles
+        //$articles = Article::orderBy('published_at', 'desc')->get();
         
         //If you return the collection it will be cast to json.
         //return $articles;
@@ -67,7 +71,6 @@ class ArticlesController extends Controller
         $input; //User input array
         
         $input = $request->all(); //Get an array of user input
-        $input['published_at'] = Carbon::now(); //Add pushlish date to input.
         
         //NOTE: Fillable protects 
         Article::create($input); //Use eloquent to create and save the new article
