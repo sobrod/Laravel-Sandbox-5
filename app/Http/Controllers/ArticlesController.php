@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleRequest;
 
 class ArticlesController extends Controller
 {
@@ -66,7 +67,7 @@ class ArticlesController extends Controller
      *
      * @return Redirect
      */
-    public function store(Requests\CreateArticleRequest $request)
+    public function store(ArticleRequest $request)
     {
         //Body will execute only if CreateArticleRequest rules pass
         
@@ -85,5 +86,35 @@ class ArticlesController extends Controller
         Article::create($input); //Use eloquent to create and save the new article
         
         return redirect(url('articles'));
+    }
+    
+    /**
+     * Edit an existing articles
+     *
+     * @return view
+     */
+    public function edit($id)
+    {
+        $article = Article::findOrFail($id); //Find or throw model not found exception
+        $editView = view('articles.edit', compact('article'));
+        //dd($article);
+        return $editView;
+    }
+    
+    /**
+     * Update an existing article.
+     *
+     * @return redirect
+     */
+    public function update($id, ArticleRequest $request)
+    {
+        //Vars
+        $article;   //The article to update.
+        
+        $article = Article::findOrFail($id); //Find or throw exception
+        
+        $article->update($request->all()); //Update
+        
+        return redirect('articles'); //Return to index
     }
 }
