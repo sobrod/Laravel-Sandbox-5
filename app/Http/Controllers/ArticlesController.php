@@ -78,6 +78,8 @@ class ArticlesController extends Controller
         //    'published_at'=>'required|date'
         //]);
         
+        //dd($request); //Test
+        
         $input; //User input array
         
         $input = $request->all(); //Get an array of user input

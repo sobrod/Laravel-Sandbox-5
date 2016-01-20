@@ -15,6 +15,9 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
+    
+    //Properties
+    //****************************************************************************************
 
     /**
      * The database table used by the model.
@@ -36,4 +39,22 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+    
+    //Relationships
+    //****************************************************************************************
+    
+    /**
+     * A user has many articles
+     *
+     */
+    public function articles()
+    {
+        //NOTES: Where $user = App\User
+        //$user->articles; //Returns Eloquent Collection
+        //$user->articles(); //Returns HasMany object
+        //$user->articles()->get(); //Returns Eloquent Collection
+        //$user->articles()->get()->toArray(); //Returns an array of article data arrays.
+        //$user->articles->toArray(); //Returns an array of article data arrays.
+        return $this->hasMany('App\Article');
+    }
 }

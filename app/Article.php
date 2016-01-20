@@ -21,6 +21,18 @@ class Article extends Model
     
     protected $dates = ['published_at']; //Convert all dates in $dates to Carbon.
     
+        //Constructors
+    //****************************************************************************************
+    
+    public function __construct($attributes = array())
+    {
+        //Eloquent model base construction
+        parent::__construct($attributes);
+        
+        //App\Article
+        $this->user_id = 1; //TEMPORARY TEST
+    }
+    
     //Mutators
     //****************************************************************************************
     
@@ -49,5 +61,19 @@ class Article extends Model
     public function scopePublished($query)
     {
         $query->where('published_at', '<=', Carbon::now());
+    }
+    
+    //Relationships
+    //****************************************************************************************
+    
+    /**
+     * An article belongs to a user.
+     *
+     * @return BelongsTo
+     */
+    public function user()
+    {
+        //Will return a BelongsTo object that can handel this kind of relationship.
+        return $this->belongsTo('App\User');
     }
 }
