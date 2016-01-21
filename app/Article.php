@@ -30,7 +30,7 @@ class Article extends Model
         parent::__construct($attributes);
         
         //App\Article
-        $this->user_id = 1; //TEMPORARY TEST
+        //$this->user_id = 1; //TEMPORARY TEST
     }
     
     //Mutators

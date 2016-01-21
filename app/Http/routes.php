@@ -15,13 +15,30 @@
 //    return view('welcome');
 //});
 
-Route::get('/', "WelcomeController@index");
+Route::get('/', "Auth\AuthController@getLogin");
 
 Route::get('contact', 'WelcomeController@contact');
 
 Route::get("about", "PagesController@about");
 
 Route::get('people', 'PagesController@people');
+
+Route::get('home', 'ArticlesController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Authentication routes
+|--------------------------------------------------------------------------
+|
+| Authentication routes
+|
+*/
+
+Route::controllers([
+    'auth'=>'Auth\AuthController',
+    'password'=>'Auth\PasswordController'
+]);
+
 
 /*
 |--------------------------------------------------------------------------

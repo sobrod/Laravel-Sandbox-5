@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Article;
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -85,7 +86,12 @@ class ArticlesController extends Controller
         $input = $request->all(); //Get an array of user input
         
         //NOTE: Fillable protects 
-        Article::create($input); //Use eloquent to create and save the new article
+        //Article::create($input); //Use eloquent to create and save the new article.
+        
+        //NOTE: Using relationships to save.
+        //Calling save via the HasMany relationship will set FK to the creating user.
+        //Remember: User::articles() return HasMany and User::articles returns collection.
+        Auth::user()->articles()->save(new Article($input));
         
         return redirect(url('articles'));
     }
